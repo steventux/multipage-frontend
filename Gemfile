@@ -14,6 +14,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc',        group: :doc
 
+gem 'gds-api-adapters', '26.6.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -38,5 +40,9 @@ group :development, :test do
   gem "simplecov-rcov", "0.2.3", require: false
 end
 
+group :test do
+  gem "webmock", "1.21.0"
+end
+
 gem "plek", "1.11.0"
-gem "airbrake", "5.0.0"
+gem "airbrake", "4.2.1"
