@@ -31,11 +31,12 @@ gem 'gds-api-adapters', '26.6.0'
 
 gem "unicorn", "5.0.1"
 gem "logstasher", "0.6.2"
-group :development, :test do
-  gem "rspec-rails", "3.4.0"
-end
 
 group :development, :test do
+  gem "pry"
+  gem "pry-byebug"
+  gem "pry-rails"
+  gem "rspec-rails", "3.4.0"
   gem "simplecov", "0.10.0", require: false
   gem "simplecov-rcov", "0.2.3", require: false
 end
