@@ -9,9 +9,11 @@ class MultipartContentsController < ApplicationController
 private
 
   def get_content_item
-    @content = ContentStore.service.content_item(content_item_path)
+    content_item = ContentStore.service.content_item(content_item_path)
 
-    unless @content.present?
+    if content_item.present?
+      @content = MultipartContent.new(content_item.to_hash)
+    else
       if base_content_item_path != content_item_path
         redirect_to base_content_item_path
       end
