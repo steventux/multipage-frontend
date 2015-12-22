@@ -12,6 +12,22 @@ RSpec.describe MultipartContentsController, type: :controller do
 
         expect(response).to be_successful
       end
+
+      it "redirects to the base content item when a part doesn't exist" do
+        content_store_does_not_have_item("/vat-rates/about")
+
+        get :show, slug: "vat-rates/about"
+
+        expect(response).to redirect_to("/vat-rates")
+      end
+
+      it "redirects to the base content item when a part doesn't exist" do
+        content_store_has_item("/vat-rates/about")
+
+        get :show, slug: "vat-rates/about"
+
+        expect(response).to be_successful
+      end
     end
 
     context "for an invalid path" do
