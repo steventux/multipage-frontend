@@ -16,16 +16,20 @@ class TravelAdvice < MultipartContent
   end
 
   def assign_country
-    country_attrs = attributes[:details].fetch(:country)
+    country_attrs = attributes[:details][:country]
     @country = Country.new(country_attrs)
   end
 end
 
+# TODO: Remove defensive code on country attrs
+# this is only present while placeholders are
+# returned from the content store
 class Country
   attr_reader :slug, :name
 
   def initialize(attrs)
-    @slug = attrs.fetch(:slug)
-    @name = attrs.fetch(:name)
+    return unless attrs
+    @slug = attrs[:slug]
+    @name = attrs[:name]
   end
 end
